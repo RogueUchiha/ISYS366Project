@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "../firebase.config";
+import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import Slider from "react-slick";
 import ProductCard from "./Product";
 import "slick-carousel/slick/slick.css";
@@ -37,6 +39,20 @@ const ProductCarousel = () => {
       img: "https://dummyimage.com/600x400/000/7CFC00",
     },
   ]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    onSnapshot(collection(db, "products"), (snapshot) => {
+      setProducts(snapshot.docs.map((doc) => doc.data()));
+      console.log(products);
+    });
+  }, []);
+
+  // const getNotes = async () => {
+  //   const notesSnapshot = await getDocs(collection(db, "products"));
+  //   const notesList = notesSnapshot.docs.map((doc) => doc.data());
+  //   setProducts(notesList);
+  // };
 
   var settings = {
     dots: false,
@@ -77,10 +93,10 @@ const ProductCarousel = () => {
     <div>
       <h2>Products</h2>
       <Slider {...settings}>
-        {slides.map((slide, index) => {
+        {products.map((slide) => {
           return (
-            <div key={index}>
-              <ProductCard imgSrc={slide.img} value={index} />
+            <div key={slide.id}>
+              <ProductCard imgSrc={slide.img} value={slide} />
             </div>
           );
         })}
