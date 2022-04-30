@@ -35,7 +35,10 @@ const Header = () => {
             <Nav className="ms-auto">
               <Nav.Link href="/cart">Cart</Nav.Link>
               {loggedIn ? (
-                <Nav.Link onClick={onLogout}>Sign Out</Nav.Link>
+                <>
+                  <Nav.Link href="/manageproducts">Product Management</Nav.Link>
+                  <Nav.Link onClick={onLogout}>Sign Out</Nav.Link>
+                </>
               ) : (
                 // <button type="button" onClick={onLogout}>
                 //   Sign Out

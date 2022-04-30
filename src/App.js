@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Cart from "./pages/Cart";
+import AddProduct from "./pages/AddProduct";
+import ProductManagment from "./pages/ProductManagment";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/addproduct" element={<AddProduct />}></Route>
+          <Route path="/manageproducts" element={<ProductManagment />}></Route>
         </Routes>
       </Router>
       <ToastContainer />
