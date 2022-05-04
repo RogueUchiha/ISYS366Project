@@ -14,13 +14,13 @@ const ProductManagment = () => {
           {/* <Sonnet /> */}
           <AddProduct />
         </Tab>
-        <Tab eventKey="edit" title="Edit">
+        <Tab eventKey="edit" title="Edit/Delete">
           {/* <Sonnet /> */}
           <ProductTable />
         </Tab>
-        <Tab eventKey="delete" title="Delete">
-          {/* <Sonnet /> */}
-        </Tab>
+        {/* <Tab eventKey="delete" title="Delete">
+          <Sonnet />
+        </Tab> */}
       </Tabs>
     </Container>
   );

@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { Badge } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
+import {
+  SettingsSystemDaydreamOutlined,
+  ShoppingCart,
+} from "@mui/icons-material";
 import logo from "../../src/wvutechlogo-png.png";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 
 const Header = () => {
-  const { loggedIn, setLoggedIn } = useAuthStatus();
+  const { loggedIn, setLoggedIn, admin, setAdmin } = useAuthStatus();
   const auth = getAuth();
   const navigate = useNavigate();
 
@@ -24,6 +27,7 @@ const Header = () => {
     console.log("hello");
     auth.signOut();
     setLoggedIn(false);
+    setAdmin(false);
     navigate("/");
   };
 
@@ -49,12 +53,17 @@ const Header = () => {
                   <Badge color="secondary" badgeContent={0}>
                     <ShoppingCart />
                   </Badge>
+                  Cart
                 </Nav.Link>
-                {loggedIn ? (
+                {admin && (
                   <>
                     <Nav.Link href="/manageproducts">
                       Product Management
                     </Nav.Link>
+                  </>
+                )}
+                {loggedIn ? (
+                  <>
                     <Nav.Link onClick={onLogout}>Sign Out</Nav.Link>
                   </>
                 ) : (

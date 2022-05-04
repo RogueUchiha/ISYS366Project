@@ -15,8 +15,8 @@ const ProductCard = ({ imgSrc, value }) => {
             bulk of the card's content.
           </Card.Text>
           <div className="product-actions">
-            <Button variant="primary">Buy Now</Button>
-            <Button variant="secondary">Add to cart</Button>
+            {/* <Button variant="primary">Buy Now</Button> */}
+            <Button variant="primary">Add to cart</Button>
           </div>
         </Card.Body>
       </Card>

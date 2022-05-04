@@ -15,6 +15,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { toast } from "react-toastify";
 import ProductModal from "./ProductModal";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
@@ -37,6 +38,7 @@ const ProductTable = () => {
   };
 
   const editProduct = async () => {
+    setShow(false);
     console.log(productData);
     const q = query(
       collection(db, "products"),
@@ -62,9 +64,6 @@ const ProductTable = () => {
       price: productData.price,
       stock: productData.stock,
     });
-
-    setShow(false);
-
     // await deleteDoc(doc(db, "products", docId));
 
     // toast.success(`Successfully deleted ${productData.name} from products`, {
@@ -123,7 +122,9 @@ const ProductTable = () => {
               <td>{item.price}</td>
               <td>{item.stock}</td>
               <td>
-                <FaRegEdit onClick={() => editProductModal(item)} />{" "}
+                <OverlayTrigger overlay={<Tooltip id={"edit"}>Edit</Tooltip>}>
+                  <FaRegEdit onClick={() => editProductModal(item)} />
+                </OverlayTrigger>
                 <MdDeleteForever onClick={() => deleteProduct(item)} />
               </td>
             </tr>

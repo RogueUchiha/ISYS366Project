@@ -7,38 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const ProductCarousel = () => {
-  const [slides, setSlides] = useState([
-    {
-      img: "https://dummyimage.com/600x400/000/7CFC00",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/ccccc",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/dddddd",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/fff",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/B22222",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/7CFC00",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/ccccc",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/dddddd",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/B22222",
-    },
-    {
-      img: "https://dummyimage.com/600x400/000/7CFC00",
-    },
-  ]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -90,7 +58,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div>
+    <div className="mb-3">
       <h2>Products</h2>
       <Slider {...settings}>
         {products.map((slide) => {

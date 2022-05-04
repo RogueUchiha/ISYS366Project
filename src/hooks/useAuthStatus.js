@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export const useAuthStatus = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [checkingStatus, setCheckingStatus] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const isMounted = useRef(true);
 
   useEffect(() => {
@@ -12,6 +13,9 @@ export const useAuthStatus = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setLoggedIn(true);
+          if (user.email === "bss0026@mix.wvu.edu") {
+            setAdmin(true);
+          }
         }
         setCheckingStatus(false);
       });
@@ -22,5 +26,5 @@ export const useAuthStatus = () => {
     };
   }, [isMounted]);
 
-  return { loggedIn, setLoggedIn, checkingStatus };
+  return { loggedIn, setLoggedIn, checkingStatus, admin, setAdmin };
 };
